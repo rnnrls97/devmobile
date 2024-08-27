@@ -1,0 +1,171 @@
+package br.edu.up.myapp
+
+import android.os.Bundle
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import br.edu.up.myapp.ui.theme.MyAppTheme
+
+class MainActivity : ComponentActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
+        setContent {
+            MyAppTheme {
+                    val listaCadastros = listOf(
+                        Cadastro(
+                            idCadastro = 1,
+                            nomeCadastro = "João Silva",
+                            foneCadastro = "1234-5678"
+                        ),
+                        Cadastro(
+                            idCadastro = 2,
+                            nomeCadastro = "Maria Oliveira",
+                            foneCadastro = "2345-6789"
+                        ),
+                        Cadastro(
+                            idCadastro = 3,
+                            nomeCadastro = "Pedro Santos",
+                            foneCadastro = "3456-7890"
+                        ),
+                        Cadastro(
+                            idCadastro = 4,
+                            nomeCadastro = "Ana Costa",
+                            foneCadastro = "4567-8901"
+                        ),Cadastro(
+                            idCadastro = 4,
+                            nomeCadastro = "Ana Costa",
+                            foneCadastro = "4567-8901"
+                        ),Cadastro(
+                            idCadastro = 4,
+                            nomeCadastro = "Ana Costa",
+                            foneCadastro = "4567-8901"
+                        ),Cadastro(
+                            idCadastro = 4,
+                            nomeCadastro = "Ana Costa",
+                            foneCadastro = "4567-8901"
+                        ),Cadastro(
+                            idCadastro = 4,
+                            nomeCadastro = "Ana Costa",
+                            foneCadastro = "4567-8901"
+                        ),Cadastro(
+                            idCadastro = 4,
+                            nomeCadastro = "Ana Costa",
+                            foneCadastro = "4567-8901"
+                        ),Cadastro(
+                            idCadastro = 4,
+                            nomeCadastro = "Ana Costa",
+                            foneCadastro = "4567-8901"
+                        ),Cadastro(
+                            idCadastro = 4,
+                            nomeCadastro = "Ana Costa",
+                            foneCadastro = "4567-8901"
+                        ),Cadastro(
+                            idCadastro = 4,
+                            nomeCadastro = "Ana Costa",
+                            foneCadastro = "4567-8901"
+                        ),Cadastro(
+                            idCadastro = 4,
+                            nomeCadastro = "Ana Costa",
+                            foneCadastro = "4567-8901"
+                        ),Cadastro(
+                            idCadastro = 4,
+                            nomeCadastro = "Ana Costa",
+                            foneCadastro = "4567-8901"
+                        ),Cadastro(
+                            idCadastro = 4,
+                            nomeCadastro = "Ana Costa",
+                            foneCadastro = "4567-8901"
+                        ),Cadastro(
+                            idCadastro = 4,
+                            nomeCadastro = "Ana Costa",
+                            foneCadastro = "4567-8901"
+                        ),Cadastro(
+                            idCadastro = 4,
+                            nomeCadastro = "Ana Costa",
+                            foneCadastro = "4567-8901"
+                        ),Cadastro(
+                            idCadastro = 4,
+                            nomeCadastro = "Ana Costa",
+                            foneCadastro = "4567-8901"
+                        ),Cadastro(
+                            idCadastro = 4,
+                            nomeCadastro = "Ana Costa",
+                            foneCadastro = "4567-8901"
+                        ),Cadastro(
+                            idCadastro = 4,
+                            nomeCadastro = "Ana Costa",
+                            foneCadastro = "4567-8901"
+                        ),Cadastro(
+                            idCadastro = 4,
+                            nomeCadastro = "Ana Costa",
+                            foneCadastro = "4567-8901"
+                        ),Cadastro(
+                            idCadastro = 4,
+                            nomeCadastro = "Ana Costa",
+                            foneCadastro = "4567-8901"
+                        ),
+                    )
+
+                    CardColumn(listaCadastros)
+            }
+        }
+    }
+}
+
+
+@Composable
+// dividindo a tela em 4 box
+fun CardColumn(listaCadastros: List<Cadastro>) {
+    LazyColumn(modifier = Modifier.fillMaxSize()) {
+        items(listaCadastros) { cadastro -> CreateCard(cadastro)}
+    }
+}
+
+@Composable
+fun CreateCard(cadastro: Cadastro){
+    Card(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(8.dp),
+        colors = CardDefaults.cardColors(containerColor = if (cadastro.idCadastro % 2 == 0) Color.Blue else Color.Red)
+    ) {
+        Column(modifier = Modifier.padding(16.dp)
+        ) {
+
+            Text(text = "ID: ${cadastro.idCadastro}", color =  Color.White)
+            Text(text = "Nome: ${cadastro.nomeCadastro}", color = Color.White)
+            Text(text = "Fone: ${cadastro.foneCadastro}", color = Color.White)
+        }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun GreetingPreview() {
+
+}
